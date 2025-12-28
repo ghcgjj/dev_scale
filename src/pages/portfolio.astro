@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const proyects = [
+	{ name: "Dental Velle", cat: "Shopify Luxury", img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000" },
+	{ name: "Support Home", cat: "Real Estate", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000" },
+	{ name: "El Artífice", cat: "Studio", img: "https://images.unsplash.com/photo-1598136490941-30d885318abd?auto=format&fit=crop&q=80&w=1000" },
+	{ name: "Aguamarina", cat: "Beauty", img: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=1000" }
+];
+---
+<Layout title="Portfolio | dev.scale">
+	<Navbar />
+	<main class="pt-48 pb-32 px-6 max-w-7xl mx-auto">
+		<h2 class="text-6xl font-black italic mb-20 tracking-tighter" data-aos="fade-right">SELECTED WORKS</h2>
+		
+		<div class="grid md:grid-cols-2 gap-20">
+			{proyects.map((p, i) => (
+				<div class="group relative" data-aos={i % 2 === 0 ? "fade-up" : "fade-down"}>
+					<div class="relative aspect-[4/5] overflow-hidden rounded-2xl">
+						<img src={p.img} class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0" alt={p.name}/>
+						<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+						<div class="absolute bottom-10 left-10">
+							<span class="text-[#d4af37] text-xs font-bold tracking-[0.3em]">{p.cat}</span>
+							<h3 class="text-4xl font-black italic mt-2 uppercase">{p.name}</h3>
+						</div>
+					</div>
+					<div class="mt-6 flex justify-between items-center opacity-50 group-hover:opacity-100 transition-all">
+						<span class="text-[10px] tracking-widest font-mono">VIEW CASE STUDY</span>
+						<div class="h-[1px] flex-grow mx-10 bg-red-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+						<span class="text-red-600">→</span>
+					</div>
+				</div>
+			))}
+		</div>
+	</main>
+</Layout>
